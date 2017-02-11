@@ -1,6 +1,6 @@
 
 from flask import Flask
-from flask import request
+
 
 # Refer to own namespace
 app = Flask(__name__)
@@ -9,9 +9,13 @@ app = Flask(__name__)
 # function and allows us to do things with it
 #
 @app.route('/')
+@app.route('/<name>')
 def index(name="Currie"):
-    name = request.args.get('name', name)
     return "Hello Jack {}!".format(name)
+
+@app.route('/add/<int:num1>/<float:num2>')
+def add(num1, num2):
+    return "{} + {} = {}".format(num1, num2, num1+num2)
 
 #
 # Debug True allows us to leave server running and have any changes detected
@@ -19,4 +23,3 @@ def index(name="Currie"):
 #
 if __name__ == '__main__':
     app.run(debug = True, port = 8000, host = '0.0.0.0')
-git
