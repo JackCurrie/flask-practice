@@ -10,7 +10,8 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/<name>')
 def index(name="Currie"):
-    return "Hello Jack {}!".format(name)
+    context = {"name" : name}
+    return render_template("index.html", **context)
 
 @app.route('/add/<int:num1>/<int:num2>')
 @app.route('/add/<float:num1>/<float:num2>')
