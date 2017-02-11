@@ -20,6 +20,14 @@ def index(name="Currie"):
 def add(num1, num2):
     return "{} + {} = {}".format(num1, num2, num1+num2)
 
+@app.route('/multiply/<int:num1>/<int:num2>')
+@app.route('/multiply/<float:num1>/<float:num2>')
+@app.route('/multiply/<int:num1>/<float:num2>')
+@app.route('/multiply/<float:num1>/<int:num2>')
+def multiply(num1, num2):
+    return "{} * {} = {}".format(num1, num2, num1*num2)
+
+
 #
 # Debug True allows us to leave server running and have any changes detected
 #
